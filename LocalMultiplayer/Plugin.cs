@@ -31,6 +31,7 @@ internal class Plugin : BaseUnityPlugin
         _harmony.PatchAll(typeof(InputManagerPatch));
         _harmony.PatchAll(typeof(MenuPageMainPatch));
         _harmony.PatchAll(typeof(PlayerAvatarPatch));
+        _harmony.PatchAll(typeof(SemiFuncPatch));
 
         ConfigManager.Initialize(Config);
 
