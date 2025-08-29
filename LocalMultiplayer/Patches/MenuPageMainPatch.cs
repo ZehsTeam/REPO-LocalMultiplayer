@@ -8,13 +8,6 @@ namespace com.github.zehsteam.LocalMultiplayer.Patches;
 [HarmonyPatch(typeof(MenuPageMain))]
 internal static class MenuPageMainPatch
 {
-    [HarmonyPatch(nameof(MenuPageMain.Start))]
-    [HarmonyPostfix]
-    private static void StartPatch()
-    {
-        SteamAccountManager.UnassignSpoofAccount();
-    }
-
     [HarmonyPatch(nameof(MenuPageMain.ButtonEventJoinGame))]
     [HarmonyPrefix]
     private static bool ButtonEventJoinGamePatch()
