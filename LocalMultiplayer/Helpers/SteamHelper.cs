@@ -1,4 +1,6 @@
-﻿namespace com.github.zehsteam.LocalMultiplayer.Helpers;
+﻿using Steamworks;
+
+namespace com.github.zehsteam.LocalMultiplayer.Helpers;
 
 internal static class SteamHelper
 {
@@ -13,5 +15,23 @@ internal static class SteamHelper
         randomPart += (uint)random.Next(0, int.MaxValue);
 
         return steamIdBase + randomPart;
+    }
+
+    public static bool IsValidClient()
+    {
+        if (SteamClient.Name == "IGGGAMES")
+            return false;
+
+        if (SteamClient.SteamId == 12345678)
+            return false;
+
+        if (SteamClient.AppId == 480)
+            return false;
+
+        AuthTicket authTicket = SteamManager.instance.steamAuthTicket;
+        if (authTicket == null) return false;
+
+        BeginAuthResult beginAuthResult = SteamUser.BeginAuthSession(authTicket.Data, SteamClient.SteamId);
+        return beginAuthResult == BeginAuthResult.OK;
     }
 }

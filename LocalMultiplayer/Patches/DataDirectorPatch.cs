@@ -1,10 +1,22 @@
-﻿using HarmonyLib;
+﻿using com.github.zehsteam.LocalMultiplayer.Managers;
+using HarmonyLib;
+using Photon.Pun;
+using Photon.Realtime;
 
 namespace com.github.zehsteam.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(DataDirector))]
 internal static class DataDirectorPatch
 {
+    [HarmonyPatch(nameof(DataDirector.PhotonSetAppId))]
+    [HarmonyPostfix]
+    private static void PhotonSetAppIdPatch()
+    {
+        AppSettings appSettings = PhotonNetwork.PhotonServerSettings.AppSettings;
+        appSettings.AppIdRealtime = ConfigManager.Photon_AppIdRealtime.Value;
+        appSettings.AppIdVoice = ConfigManager.Photon_AppIdVoice.Value;
+    }
+
     [HarmonyPatch(nameof(DataDirector.SaveSettings))]
     [HarmonyPrefix]
     private static bool SaveSettingsPatch()

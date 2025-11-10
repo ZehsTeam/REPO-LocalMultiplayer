@@ -2,13 +2,8 @@
 
 internal static class StringExtensions
 {
-    public static ulong ToUlong(this string value)
+    public static ulong ToUlong(this string value, ulong defaultValue = 0)
     {
-        if (ulong.TryParse(value, out ulong result))
-        {
-            return result;
-        }
-
-        return 0;
+        return ulong.TryParse(value, out ulong result) ? result : defaultValue;
     }
 }

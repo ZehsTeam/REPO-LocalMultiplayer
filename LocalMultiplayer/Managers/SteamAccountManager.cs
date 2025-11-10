@@ -3,9 +3,10 @@ using com.github.zehsteam.LocalMultiplayer.Objects;
 using Photon.Pun;
 using Steamworks;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-namespace com.github.zehsteam.LocalMultiplayer;
+namespace com.github.zehsteam.LocalMultiplayer.Managers;
 
 internal static class SteamAccountManager
 {
@@ -54,6 +55,8 @@ internal static class SteamAccountManager
 
     public static void AssignSpoofAccount()
     {
+        Logger.LogInfo($"SteamAccountManager: AssignSpoofAccount(); IsUsingSpoofAccount: {IsUsingSpoofAccount}");
+
         if (IsUsingSpoofAccount)
         {
             return;
@@ -66,10 +69,14 @@ internal static class SteamAccountManager
         SpoofAccount = account;
 
         PhotonNetwork.NickName = account.Username;
+
+        Logger.LogInfo($"SteamAccountManager: Set spoof account (Username: \"{account.Username}\", SteamID: {account.SteamId})");
     }
 
     public static void UnassignSpoofAccount()
     {
+        Logger.LogInfo($"SteamAccountManager: UnassignSpoofAccount(); IsUsingSpoofAccount: {IsUsingSpoofAccount}");
+
         if (!IsUsingSpoofAccount)
         {
             return;
@@ -80,6 +87,8 @@ internal static class SteamAccountManager
         SpoofAccount = default;
 
         PhotonNetwork.NickName = RealAccount.Username;
+
+        Logger.LogInfo($"SteamAccountManager: UnassignSpoofAccount(); Unassigned spoof account.");
     }
 
     public static void ResetSpoofAccountsInUse()
@@ -139,7 +148,7 @@ internal static class SteamAccountManager
 
     private static List<SteamAccount> GetAvailableSpoofAccounts()
     {
-        List<SteamAccount> accounts = [];
+        List<SteamAccount> availableAccounts = [];
 
         var accountsInUse = GlobalSaveHelper.SpoofSteamAccountsInUse.Value;
 
@@ -150,10 +159,10 @@ internal static class SteamAccountManager
                 continue;
             }
 
-            accounts.Add(account);
+            availableAccounts.Add(account);
         }
 
-        return accounts;
+        return availableAccounts;
     }
 
     private static SteamAccount GetAvailableSpoofAccount()
@@ -162,38 +171,30 @@ internal static class SteamAccountManager
 
         if (accounts.Count == 0)
         {
-            Logger.LogWarning("SteamHelper: No cached spoof steam accounts available. Generating new spoof steam account.");
+            Logger.LogWarning("SteamAccountManager: No cached spoof steam accounts available. Generating new spoof steam account.");
             return new SteamAccount($"Player {Random.Range(100, 999)}", SteamHelper.GenerateRandomSteamId());
         }
 
         return accounts[0];
     }
 
-    private static void AddSpoofAccountInUse(SteamAccount account)
+    private static void AddSpoofAccountInUse(SteamAccount accountToAdd)
     {
         var accounts = GlobalSaveHelper.SpoofSteamAccountsInUse.Value;
 
-        if (accounts.Contains(account))
+        if (accounts.Contains(accountToAdd))
         {
             return;
         }
 
-        accounts.Add(account);
+        accounts.Add(accountToAdd);
 
         GlobalSaveHelper.SpoofSteamAccountsInUse.Value = accounts;
     }
 
-    private static void RemoveSpoofAccountInUse(SteamAccount account)
+    private static void RemoveSpoofAccountInUse(SteamAccount accountToRemove)
     {
-        var accounts = GlobalSaveHelper.SpoofSteamAccountsInUse.Value;
-
-        if (!accounts.Contains(account))
-        {
-            return;
-        }
-
-        accounts.Remove(account);
-
-        GlobalSaveHelper.SpoofSteamAccountsInUse.Value = accounts;
+        List<SteamAccount> accountsInUse = GlobalSaveHelper.SpoofSteamAccountsInUse.Value;
+        GlobalSaveHelper.SpoofSteamAccountsInUse.Value = accountsInUse.Where(x => x.SteamId != accountToRemove.SteamId).ToList();
     }
 }

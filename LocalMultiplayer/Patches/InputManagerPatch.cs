@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using com.github.zehsteam.LocalMultiplayer.Managers;
+using HarmonyLib;
 
 namespace com.github.zehsteam.LocalMultiplayer.Patches;
 
@@ -9,23 +10,13 @@ internal static class InputManagerPatch
     [HarmonyPrefix]
     private static bool SaveDefaultKeyBindingsPatch()
     {
-        if (!SteamAccountManager.IsUsingSpoofAccount)
-        {
-            return true;
-        }
-
-        return false;
+        return !SteamAccountManager.IsUsingSpoofAccount;
     }
 
     [HarmonyPatch(nameof(InputManager.SaveCurrentKeyBindings))]
     [HarmonyPrefix]
     private static bool SaveCurrentKeyBindingsPatch()
     {
-        if (!SteamAccountManager.IsUsingSpoofAccount)
-        {
-            return true;
-        }
-
-        return false;
+        return !SteamAccountManager.IsUsingSpoofAccount;
     }
 }

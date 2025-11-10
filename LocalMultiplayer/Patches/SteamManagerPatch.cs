@@ -1,4 +1,5 @@
 ﻿using com.github.zehsteam.LocalMultiplayer.Helpers;
+using com.github.zehsteam.LocalMultiplayer.Managers;
 using HarmonyLib;
 using Photon.Pun;
 using Photon.Realtime;
@@ -24,10 +25,8 @@ internal static class SteamManagerPatch
     [HarmonyPostfix]
     private static void StartPatch()
     {
-        if (!IsValidClient())
-        {
+        if (!SteamHelper.IsValidClient())
             Application.Quit();
-        }
     }
 
     [HarmonyPatch(nameof(SteamManager.OnLobbyCreated))]
@@ -35,9 +34,7 @@ internal static class SteamManagerPatch
     private static void OnLobbyCreatedPatch(ref Result _result, ref Lobby _lobby)
     {
         if (_result != Result.OK)
-        {
             return;
-        }
 
         GlobalSaveHelper.SteamLobbyId.Value = _lobby.Id;
 
@@ -50,18 +47,5 @@ internal static class SteamManagerPatch
     {
         PhotonNetwork.AuthValues = new AuthenticationValues(Guid.NewGuid().ToString());
         return false;
-    }
-
-    private static bool IsValidClient()
-    {
-        AuthTicket authTicket = SteamManager.instance.steamAuthTicket;
-
-        if (authTicket == null)
-        {
-            return false;
-        }
-
-        BeginAuthResult beginAuthResult = SteamUser.BeginAuthSession(authTicket.Data, SteamClient.SteamId);
-        return beginAuthResult == BeginAuthResult.OK;
     }
 }

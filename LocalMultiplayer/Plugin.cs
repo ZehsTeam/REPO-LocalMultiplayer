@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
+using com.github.zehsteam.LocalMultiplayer.Objects;
 using com.github.zehsteam.LocalMultiplayer.Patches;
 using HarmonyLib;
 
@@ -10,13 +11,13 @@ internal class Plugin : BaseUnityPlugin
 {
     private readonly Harmony _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
 
-    internal static Plugin Instance { get; private set; }
+    public static Plugin Instance { get; private set; }
 
-    internal static new ConfigFile Config { get; private set; }
+    public new ConfigFile Config { get; private set; }
 
-    #pragma warning disable IDE0051 // Remove unused private members
+    public static JsonSave GlobalSave { get; private set; }
+
     private void Awake()
-    #pragma warning restore IDE0051 // Remove unused private members
     {
         Instance = this;
 
@@ -25,15 +26,16 @@ internal class Plugin : BaseUnityPlugin
 
         Config = Utils.CreateGlobalConfigFile(this);
 
-        _harmony.PatchAll(typeof(NetworkConnectPatch));
-        _harmony.PatchAll(typeof(SteamManagerPatch));
+        GlobalSave = new JsonSave(Utils.GetPluginPersistentDataPath(), "GlobalSave");
+
+        _harmony.PatchAll(typeof(SteamClientPatch));
         _harmony.PatchAll(typeof(DataDirectorPatch));
+        _harmony.PatchAll(typeof(NetworkManagerPatch));
+        _harmony.PatchAll(typeof(SteamManagerPatch));
         _harmony.PatchAll(typeof(InputManagerPatch));
         _harmony.PatchAll(typeof(MenuPageMainPatch));
         _harmony.PatchAll(typeof(PlayerAvatarPatch));
 
         ConfigManager.Initialize(Config);
-
-        SteamClientPatch.PatchAll(_harmony);
     }
 }

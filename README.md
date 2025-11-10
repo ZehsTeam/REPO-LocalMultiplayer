@@ -1,4 +1,5 @@
 # LocalMultiplayer
+
 [![GitHub](https://img.shields.io/badge/GitHub-LocalMultiplayer-brightgreen?style=for-the-badge&logo=GitHub)](https://github.com/ZehsTeam/REPO-LocalMultiplayer)
 [![Thunderstore Version](https://img.shields.io/thunderstore/v/Zehs/LocalMultiplayer?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/repo/p/Zehs/LocalMultiplayer/)
 [![Thunderstore Downloads](https://img.shields.io/thunderstore/dt/Zehs/LocalMultiplayer?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/repo/p/Zehs/LocalMultiplayer/)
@@ -6,15 +7,19 @@
 **Play multiplayer locally with one Steam account.**
 
 ## Features
+
 This mod allows you to connect two R.E.P.O. instances to the same multiplayer game using one Steam account.
 
 ## Local Co-Op
+
 If you want to use this mod for local co-op, I recommend using [Nucleus Co-Op](https://nucleus-coop.github.io) to control multiple instances of the game simultaneously.
 
 ## Usage
+
 This mod requires you to create your own Photon cloud applications. (This does not require any payment.)
 
 ### 1. Photon
+
 1. Go to the [Photon Engine](https://www.photonengine.com) website and sign in or create an account.
 2. Navigate to the [Dashboard](https://dashboard.photonengine.com).
 3. Create a new Photon cloud application and select `Pun` for the Photon SDK.
@@ -23,6 +28,7 @@ This mod requires you to create your own Photon cloud applications. (This does n
 6. Choose any name you would like and click Create.
 
 ### 2. Config Settings
+
 1. Open the config file. (See the Config Settings section on how to find the config file.)
 2. Set `AppIdRealtime` to your Photon `Pun` application's App ID.
 3. Set `AppIdVoice` to your Photon `Voice` application's App ID.
@@ -44,6 +50,7 @@ This mod requires you to create your own Photon cloud applications. (This does n
 > The file path must lead to your profile's `BepInEx.Preloader.dll` file in the `BepInEx/core` folder.
 
 ### 4. Testing
+
 1. Open the game.
 2. Go to Settings > Graphics.
 3. Set your window mode to Windowed. (This is for easier testing. See screenshots for an example.)
@@ -52,6 +59,7 @@ This mod requires you to create your own Photon cloud applications. (This does n
 6. Click the join game button.
 
 ## Config Settings
+
 You must open your game at least once with the mod installed for the config file to get generated.
 
 This mod uses a global config file so you don't have to configure your settings for each modpack you use and to prevent your Photon App IDs from being transferred in your profile codes.
@@ -65,10 +73,12 @@ You can locate the config file at this path:
 > You can paste the config file path in your Windows run box or file explorer to automatically open the config file.
 
 ## Credits
+
 - [BlueAmulet](https://github.com/BlueAmulet) - Providing info on how to make this mod work.
 - [Unloaded Hangar](https://github.com/UnloadedHangar) - Helping with some specific code.
 
 ## Developer Contact
+
 **Report bugs, suggest features, or provide feedback:**
 
 | **Discord Server** | **Forum** | **Post** |  
@@ -76,11 +86,14 @@ You can locate the config file at this path:
 | [R.E.P.O. Modding Server](https://discord.com/invite/vPJtKhYAFe) | `#released-mods` | [LocalMultiplayer](https://discord.com/channels/1344557689979670578/1352815417579798652) |
 
 - **GitHub Issues Page:** [LocalMultiplayer](https://github.com/ZehsTeam/REPO-LocalMultiplayer/issues)
-- **Links:** https://solo.to/crithaxxog
+- **My Links:** https://solo.to/crithaxxog
 
-[<img src="https://i.imgur.com/duJZQTS.png" width="200px">](https://ko-fi.com/zehsteam)
+<a href="https://ko-fi.com/zehsteam" target="_blank">
+<img src="https://storage.ko-fi.com/cdn/brandasset/v2/support_me_on_kofi_dark.png" alt="Ko-Fi" width="200px"/>
+</a>
 
 ## Screenshots
+
 <img src="https://i.imgur.com/VhVYtPV.png" width="100%">
 
 ----

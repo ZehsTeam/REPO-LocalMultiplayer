@@ -86,11 +86,7 @@ internal class JsonSave : IDisposable
 
             RefreshData();
 
-            if (_data == null)
-            {
-                _data = [];
-            }
-
+            _data ??= [];
             _data[key] = JToken.FromObject(value);
 
             return WriteFile(_data);
