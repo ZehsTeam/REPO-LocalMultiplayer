@@ -1,8 +1,8 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using Photon.Pun;
 using Steamworks;
 
-namespace com.github.zehsteam.LocalMultiplayer.Patches;
+namespace com.empress.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(PlayerAvatar))]
 internal static class PlayerAvatarPatch

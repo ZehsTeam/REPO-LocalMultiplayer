@@ -1,10 +1,10 @@
-﻿using BepInEx;
+using BepInEx;
 using BepInEx.Configuration;
-using com.github.zehsteam.LocalMultiplayer.Objects;
-using com.github.zehsteam.LocalMultiplayer.Patches;
+using com.empress.LocalMultiplayer.Objects;
+using com.empress.LocalMultiplayer.Patches;
 using HarmonyLib;
 
-namespace com.github.zehsteam.LocalMultiplayer;
+namespace com.empress.LocalMultiplayer;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
 internal class Plugin : BaseUnityPlugin

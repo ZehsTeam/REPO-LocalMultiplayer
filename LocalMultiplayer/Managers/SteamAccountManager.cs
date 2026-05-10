@@ -1,12 +1,12 @@
-﻿using com.github.zehsteam.LocalMultiplayer.Helpers;
-using com.github.zehsteam.LocalMultiplayer.Objects;
+using com.empress.LocalMultiplayer.Helpers;
+using com.empress.LocalMultiplayer.Objects;
 using Photon.Pun;
 using Steamworks;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace com.github.zehsteam.LocalMultiplayer.Managers;
+namespace com.empress.LocalMultiplayer.Managers;
 
 internal static class SteamAccountManager
 {

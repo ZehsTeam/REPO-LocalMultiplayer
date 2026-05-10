@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace com.github.zehsteam.LocalMultiplayer.Objects;
+namespace com.empress.LocalMultiplayer.Objects;
 
 public struct SteamAccount : IEquatable<SteamAccount>
 {

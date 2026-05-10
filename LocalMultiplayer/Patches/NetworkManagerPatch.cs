@@ -1,7 +1,7 @@
-﻿using com.github.zehsteam.LocalMultiplayer.Managers;
+using com.empress.LocalMultiplayer.Managers;
 using HarmonyLib;
 
-namespace com.github.zehsteam.LocalMultiplayer.Patches;
+namespace com.empress.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(NetworkManager))]
 internal static class NetworkManagerPatch

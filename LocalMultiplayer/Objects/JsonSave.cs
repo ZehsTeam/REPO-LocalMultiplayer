@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Text;
 using System.Threading;
 using UnityEngine;
 
-namespace com.github.zehsteam.LocalMultiplayer.Objects;
+namespace com.empress.LocalMultiplayer.Objects;
 
 internal class JsonSave : IDisposable
 {

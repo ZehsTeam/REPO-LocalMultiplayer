@@ -1,17 +1,19 @@
-﻿using BepInEx;
+using BepInEx;
 using BepInEx.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Text;
 using UnityEngine;
 
-namespace com.github.zehsteam.LocalMultiplayer;
+namespace com.empress.LocalMultiplayer;
 
 internal static class Utils
 {
+    private const string PersistentDataFolderName = "LocalMultiplayer";
+
     public static string GetPluginPersistentDataPath()
     {
-        return Path.Combine(Application.persistentDataPath, MyPluginInfo.PLUGIN_NAME);
+        return Path.Combine(Application.persistentDataPath, PersistentDataFolderName);
     }
 
     public static ConfigFile CreateConfigFile(BaseUnityPlugin plugin, string path, string name = null, bool saveOnInit = false)

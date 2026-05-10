@@ -1,18 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <ProduceReferenceAssembly>false</ProduceReferenceAssembly>
     
-    <AssemblyName>com.github.zehsteam.$(MSBuildProjectName)</AssemblyName> <!-- PLUGIN_GUID -->
-    <Product>$(MSBuildProjectName)</Product>                               <!-- PLUGIN_NAME -->
-    <Version>1.4.0</Version>                                               <!-- PLUGIN_VERSION -->
-    <Authors>Zehs</Authors>
-    <Description>Play multiplayer locally with one Steam account.</Description>
-    <Copyright>Copyright © 2025 Zehs</Copyright>
+    <AssemblyName>com.empress.$(MSBuildProjectName)</AssemblyName>          <!-- PLUGIN_GUID -->
+    <Product>EMPRESS Local Multiplayer</Product>                            <!-- PLUGIN_NAME -->
+    <Version>1.4.1</Version>                                                <!-- PLUGIN_VERSION -->
+    <Authors>EMPRESS; Zehs</Authors>
+    <Description>EMPRESS fork for R.E.P.O. v4 local multiplayer with one Steam account.</Description>
+    <Copyright>Original copyright © 2025 Zehs. EMPRESS fork © 2026.</Copyright>
     
-    <RootNamespace>com.github.zehsteam.$(MSBuildProjectName)</RootNamespace>
+    <RootNamespace>com.empress.$(MSBuildProjectName)</RootNamespace>
     
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     
@@ -46,7 +46,7 @@
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="UnityEngine.Modules" Version="2022.3.62" IncludeAssets="compile" PrivateAssets="all" />
-    <PackageReference Include="R.E.P.O.GameLibs.Steam" Version="0.3.0-ngd.0" />
+    <PackageReference Include="R.E.P.O.GameLibs.Steam" Version="0.4.0-ngd.0" />
   </ItemGroup>
   
   <!-- Gale profile names -->
@@ -60,7 +60,7 @@
     <GaleDataFolder>$(AppData)\com.kesomannen.gale</GaleDataFolder>
     <GaleProfilesFolder>$(GaleDataFolder)\$(Game)\profiles</GaleProfilesFolder>
     <BepInExPluginsFolder>$(GaleProfilesFolder)\$(GaleProfileName)\BepInEx\plugins</BepInExPluginsFolder>
-    <PluginFolder>$(BepInExPluginsFolder)\Zehs-$(MSBuildProjectName)</PluginFolder>
+    <PluginFolder>$(BepInExPluginsFolder)\Empress-$(MSBuildProjectName)</PluginFolder>
   </PropertyGroup>
 
   <Target Name="CopyToGalePluginsFolder" AfterTargets="PostBuildEvent">

@@ -1,9 +1,9 @@
-﻿using com.github.zehsteam.LocalMultiplayer.Managers;
+using com.empress.LocalMultiplayer.Managers;
 using HarmonyLib;
 using Photon.Pun;
 using Photon.Realtime;
 
-namespace com.github.zehsteam.LocalMultiplayer.Patches;
+namespace com.empress.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(DataDirector))]
 internal static class DataDirectorPatch

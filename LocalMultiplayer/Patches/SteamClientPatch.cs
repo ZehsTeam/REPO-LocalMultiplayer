@@ -1,8 +1,8 @@
-﻿using com.github.zehsteam.LocalMultiplayer.Managers;
+using com.empress.LocalMultiplayer.Managers;
 using HarmonyLib;
 using Steamworks;
 
-namespace com.github.zehsteam.LocalMultiplayer.Patches;
+namespace com.empress.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(SteamClient))]
 internal static class SteamClientPatch

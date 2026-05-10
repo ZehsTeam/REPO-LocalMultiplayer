@@ -1,6 +1,6 @@
-﻿using BepInEx.Logging;
+using BepInEx.Logging;
 
-namespace com.github.zehsteam.LocalMultiplayer;
+namespace com.empress.LocalMultiplayer;
 
 internal static class Logger
 {

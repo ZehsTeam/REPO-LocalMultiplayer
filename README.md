@@ -1,10 +1,12 @@
-# LocalMultiplayer
+# EMPRESS Local Multiplayer
 
-[![GitHub](https://img.shields.io/badge/GitHub-LocalMultiplayer-brightgreen?style=for-the-badge&logo=GitHub)](https://github.com/ZehsTeam/REPO-LocalMultiplayer)
+[![Upstream GitHub](https://img.shields.io/badge/Upstream-LocalMultiplayer-brightgreen?style=for-the-badge&logo=GitHub)](https://github.com/ZehsTeam/REPO-LocalMultiplayer)
 [![Thunderstore Version](https://img.shields.io/thunderstore/v/Zehs/LocalMultiplayer?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/repo/p/Zehs/LocalMultiplayer/)
 [![Thunderstore Downloads](https://img.shields.io/thunderstore/dt/Zehs/LocalMultiplayer?style=for-the-badge&logo=thunderstore&logoColor=white)](https://thunderstore.io/c/repo/p/Zehs/LocalMultiplayer/)
 
-**Play multiplayer locally with one Steam account.**
+**EMPRESS fork for R.E.P.O. v4 local multiplayer with one Steam account.**
+
+This fork is based on ZehsTeam's MIT-licensed LocalMultiplayer mod. The original copyright and license are preserved in `LICENSE.txt`.
 
 ## Features
 
@@ -85,7 +87,7 @@ You can locate the config file at this path:
 |--------------------|-----------|----------|  
 | [R.E.P.O. Modding Server](https://discord.com/invite/vPJtKhYAFe) | `#released-mods` | [LocalMultiplayer](https://discord.com/channels/1344557689979670578/1352815417579798652) |
 
-- **GitHub Issues Page:** [LocalMultiplayer](https://github.com/ZehsTeam/REPO-LocalMultiplayer/issues)
+- **Original GitHub Issues Page:** [LocalMultiplayer](https://github.com/ZehsTeam/REPO-LocalMultiplayer/issues)
 - **My Links:** https://solo.to/crithaxxog
 
 <a href="https://ko-fi.com/zehsteam" target="_blank">

@@ -1,0 +1,9 @@
+{
+  "name": "EMPRESS_LocalMultiplayer",
+  "version_number": "1.4.1",
+  "website_url": "https://github.com/ZehsTeam/REPO-LocalMultiplayer",
+  "description": "EMPRESS fork for R.E.P.O. v4 local multiplayer with one Steam account.",
+  "dependencies": [
+    "BepInEx-BepInExPack-5.4.2304"
+  ]
+}

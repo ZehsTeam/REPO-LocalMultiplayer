@@ -1,4 +1,4 @@
-﻿namespace com.github.zehsteam.LocalMultiplayer.Extensions;
+namespace com.empress.LocalMultiplayer.Extensions;
 
 internal static class StringExtensions
 {

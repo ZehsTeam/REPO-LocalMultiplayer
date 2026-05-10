@@ -1,14 +1,13 @@
-﻿using com.github.zehsteam.LocalMultiplayer.Helpers;
-using com.github.zehsteam.LocalMultiplayer.Managers;
+using com.empress.LocalMultiplayer.Helpers;
+using com.empress.LocalMultiplayer.Managers;
 using HarmonyLib;
 using Photon.Pun;
 using Photon.Realtime;
 using Steamworks;
 using Steamworks.Data;
 using System;
-using UnityEngine;
 
-namespace com.github.zehsteam.LocalMultiplayer.Patches;
+namespace com.empress.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(SteamManager))]
 internal static class SteamManagerPatch
@@ -19,14 +18,6 @@ internal static class SteamManagerPatch
     private static void AwakePatch()
     {
         SteamAccountManager.Initialize();
-    }
-
-    [HarmonyPatch(nameof(SteamManager.Start))]
-    [HarmonyPostfix]
-    private static void StartPatch()
-    {
-        if (!SteamHelper.IsValidClient())
-            Application.Quit();
     }
 
     [HarmonyPatch(nameof(SteamManager.OnLobbyCreated))]
