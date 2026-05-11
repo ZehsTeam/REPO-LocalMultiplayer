@@ -9,7 +9,7 @@ internal static class PlayerAvatar_Patches
 {
     [HarmonyPatch(nameof(PlayerAvatar.AddToStatsManager))]
     [HarmonyPrefix]
-    private static void AddToStatsManagerPatch()
+    private static void AddToStatsManager_Patch()
     {
         PhotonNetwork.NickName = SteamClient.Name;
     }

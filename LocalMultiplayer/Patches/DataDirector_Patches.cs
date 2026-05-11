@@ -10,7 +10,7 @@ internal static class DataDirector_Patches
 {
     [HarmonyPatch(nameof(DataDirector.PhotonSetAppId))]
     [HarmonyPostfix]
-    private static void PhotonSetAppIdPatch()
+    private static void PhotonSetAppId_Patch()
     {
         AppSettings appSettings = PhotonNetwork.PhotonServerSettings.AppSettings;
         appSettings.AppIdRealtime = ConfigManager.Photon_AppIdRealtime.Value;
@@ -19,7 +19,7 @@ internal static class DataDirector_Patches
 
     [HarmonyPatch(nameof(DataDirector.SaveSettings))]
     [HarmonyPrefix]
-    private static bool SaveSettingsPatch()
+    private static bool SaveSettings_Patch()
     {
         if (!SteamAccountManager.IsUsingSpoofAccount)
         {
@@ -31,7 +31,7 @@ internal static class DataDirector_Patches
 
     [HarmonyPatch(nameof(DataDirector.ColorSetBody))]
     [HarmonyPrefix]
-    private static bool ColorSetBodyPatch(int colorID)
+    private static bool ColorSetBody_Patch(int colorID)
     {
         if (!SteamAccountManager.IsUsingSpoofAccount)
         {
@@ -44,7 +44,7 @@ internal static class DataDirector_Patches
 
     [HarmonyPatch(nameof(DataDirector.ColorGetBody))]
     [HarmonyPrefix]
-    private static bool ColorGetBodyPatch(ref int __result)
+    private static bool ColorGetBody_Patch(ref int __result)
     {
         if (!SteamAccountManager.IsUsingSpoofAccount)
         {

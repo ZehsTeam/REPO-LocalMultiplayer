@@ -11,7 +11,7 @@ internal static class MenuPageMain_Patches
 {
     [HarmonyPatch(nameof(MenuPageMain.ButtonEventJoinGame))]
     [HarmonyPrefix]
-    private static bool ButtonEventJoinGamePatch()
+    private static bool ButtonEventJoinGame_Patch()
     {
         SteamAccountManager.AssignSpoofAccount();
 

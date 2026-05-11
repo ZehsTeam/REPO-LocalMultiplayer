@@ -8,14 +8,14 @@ internal static class InputManager_Patches
 {
     [HarmonyPatch(nameof(InputManager.SaveDefaultKeyBindings))]
     [HarmonyPrefix]
-    private static bool SaveDefaultKeyBindingsPatch()
+    private static bool SaveDefaultKeyBindings_Patch()
     {
         return !SteamAccountManager.IsUsingSpoofAccount;
     }
 
     [HarmonyPatch(nameof(InputManager.SaveCurrentKeyBindings))]
     [HarmonyPrefix]
-    private static bool SaveCurrentKeyBindingsPatch()
+    private static bool SaveCurrentKeyBindings_Patch()
     {
         return !SteamAccountManager.IsUsingSpoofAccount;
     }

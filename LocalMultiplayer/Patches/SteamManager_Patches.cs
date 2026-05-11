@@ -16,14 +16,14 @@ internal static class SteamManager_Patches
     [HarmonyPatch(nameof(SteamManager.Awake))]
     [HarmonyPostfix]
     [HarmonyPriority(Priority.First)]
-    private static void AwakePatch()
+    private static void Awake_Patch()
     {
         SteamAccountManager.Initialize();
     }
 
     [HarmonyPatch(nameof(SteamManager.Start))]
     [HarmonyPostfix]
-    private static void StartPatch()
+    private static void Start_Patch()
     {
         if (!SteamHelper.IsValidClient())
             Application.Quit();
@@ -31,7 +31,7 @@ internal static class SteamManager_Patches
 
     [HarmonyPatch(nameof(SteamManager.OnLobbyCreated))]
     [HarmonyPostfix]
-    private static void OnLobbyCreatedPatch(ref Result _result, ref Lobby _lobby)
+    private static void OnLobbyCreated_Patch(ref Result _result, ref Lobby _lobby)
     {
         if (_result != Result.OK)
             return;
@@ -43,7 +43,7 @@ internal static class SteamManager_Patches
 
     [HarmonyPatch(nameof(SteamManager.SendSteamAuthTicket))]
     [HarmonyPrefix]
-    private static bool SendSteamAuthTicketPatch()
+    private static bool SendSteamAuthTicket_Patch()
     {
         PhotonNetwork.AuthValues = new AuthenticationValues(Guid.NewGuid().ToString());
         return false;

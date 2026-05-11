@@ -9,7 +9,7 @@ internal static class SteamClient_Patches
 {
     [HarmonyPatch(nameof(SteamClient.Name), MethodType.Getter)]
     [HarmonyPrefix]
-    private static bool NamePatch(ref string __result)
+    private static bool Name_Patch(ref string __result)
     {
         if (!SteamAccountManager.IsUsingSpoofAccount)
         {
@@ -22,7 +22,7 @@ internal static class SteamClient_Patches
 
     [HarmonyPatch(nameof(SteamClient.SteamId), MethodType.Getter)]
     [HarmonyPrefix]
-    private static bool SteamIdPatch(ref SteamId __result)
+    private static bool SteamId_Patch(ref SteamId __result)
     {
         if (!SteamAccountManager.IsUsingSpoofAccount)
         {

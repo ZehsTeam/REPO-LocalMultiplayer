@@ -8,7 +8,7 @@ internal static class NetworkManager_Patches
 {
     [HarmonyPatch(nameof(NetworkManager.OnDisconnected))]
     [HarmonyPostfix]
-    private static void OnDisconnectedPatch()
+    private static void OnDisconnected_Patch()
     {
         SteamAccountManager.UnassignSpoofAccount();
     }
