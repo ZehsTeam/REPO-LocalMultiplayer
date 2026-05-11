@@ -1,4 +1,4 @@
-﻿using com.github.zehsteam.LocalMultiplayer.Helpers;
+using com.github.zehsteam.LocalMultiplayer.Helpers;
 using com.github.zehsteam.LocalMultiplayer.Managers;
 using HarmonyLib;
 using Photon.Pun;
