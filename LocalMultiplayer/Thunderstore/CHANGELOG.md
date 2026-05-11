@@ -1,4 +1,8 @@
-# v1.4.0
+# v1.5.0
+
+- Updated for R.E.P.O. v0.4.0
+
+## v1.4.0
 
 - Updated for R.E.P.O. v0.3.0
 
