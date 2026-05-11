@@ -10,7 +10,7 @@
     <Version>1.4.0</Version>                                               <!-- PLUGIN_VERSION -->
     <Authors>Zehs</Authors>
     <Description>Play multiplayer locally with one Steam account.</Description>
-    <Copyright>Copyright © 2025 Zehs</Copyright>
+    <Copyright>Copyright © 2026 Zehs</Copyright>
     
     <RootNamespace>com.github.zehsteam.$(MSBuildProjectName)</RootNamespace>
     
@@ -18,7 +18,7 @@
     
     <DebugSymbols>true</DebugSymbols>
     <DebugType>embedded</DebugType>
-
+    
     <!-- Trim the project path in debug symbols -->
     <PathMap>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))=./</PathMap>
     
@@ -38,7 +38,12 @@
   <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Link="README.md" />
+  </ItemGroup>
   
+  <!-- Dependencies -->
   <ItemGroup>
     <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.2" PrivateAssets="all" />
     <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
@@ -48,22 +53,43 @@
     <PackageReference Include="UnityEngine.Modules" Version="2022.3.62" IncludeAssets="compile" PrivateAssets="all" />
     <PackageReference Include="R.E.P.O.GameLibs.Steam" Version="0.4.0-ngd.0" />
   </ItemGroup>
-  
-  <!-- Gale profile names -->
-  <PropertyGroup>
-    <GaleProfileName>Mod Development</GaleProfileName>
-  </PropertyGroup>
-  
+
   <!-- Settings -->
   <PropertyGroup>
     <Game>repo</Game>
-    <GaleDataFolder>$(AppData)\com.kesomannen.gale</GaleDataFolder>
-    <GaleProfilesFolder>$(GaleDataFolder)\$(Game)\profiles</GaleProfilesFolder>
-    <BepInExPluginsFolder>$(GaleProfilesFolder)\$(GaleProfileName)\BepInEx\plugins</BepInExPluginsFolder>
-    <PluginFolder>$(BepInExPluginsFolder)\Zehs-$(MSBuildProjectName)</PluginFolder>
-  </PropertyGroup>
+    <ThunderstoreTeamName>Zehs</ThunderstoreTeamName>
+    
+    <GaleProfileName>Mod Development</GaleProfileName>
 
-  <Target Name="CopyToGalePluginsFolder" AfterTargets="PostBuildEvent">
-    <Copy Condition="Exists('$(BepInExPluginsFolder)')" DestinationFolder="$(PluginFolder)" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="true" SourceFiles="$(TargetPath)" />
+    <GaleDataFolder>$(AppData)\com.kesomannen.gale</GaleDataFolder>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <AssetBundleFilePath>$(AssetBundleFolder)\$(AssetBundleFileName)</AssetBundleFilePath>
+    
+    <GaleProfilesFolder>$(GaleDataFolder)\$(Game)\profiles</GaleProfilesFolder>
+
+    <BepInExPluginsFolder>$(GaleProfilesFolder)\$(GaleProfileName)\BepInEx\plugins</BepInExPluginsFolder>
+
+    <PluginFolder>$(BepInExPluginsFolder)\$(ThunderstoreTeamName)-$(MSBuildProjectName)</PluginFolder>
+  </PropertyGroup>
+  
+  <!-- Copy files to Gale plugin folder -->
+  <Target Name="CopyToGalePluginFolders" AfterTargets="NetcodePatch">
+    <Message Text="Copying to Gale plugin folders" Importance="high" />
+    
+    <!-- Copy DLL -->
+    <Copy Condition="Exists('$(BepInExPluginsFolder)')" SourceFiles="$(TargetPath)" DestinationFolder="$(PluginFolder)" OverwriteReadOnlyFiles="true" SkipUnchangedFiles="true" />
+  </Target>
+  
+  <!-- Call with `dotnet build -target:PackThunderstore` -->
+  <Target Name="PackThunderstore">
+    <Exec Command="dotnet tool restore" />
+    <Exec Command="dotnet tcli build --config-path &quot;$(ProjectDir)Thunderstore\thunderstore.toml&quot; --package-version $(Version)" />
+
+    <ItemGroup>
+      <ThunderstorePackage Include="$(ProjectDir)Thunderstore\Packages\*-$(Version).zip" />
+    </ItemGroup>
+    <Move SourceFiles="@(ThunderstorePackage)" DestinationFolder="$(USERPROFILE)\Downloads\Thunderstore Builds" />
   </Target>
 </Project>
