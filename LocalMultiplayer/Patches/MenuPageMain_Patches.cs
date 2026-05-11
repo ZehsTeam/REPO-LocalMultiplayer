@@ -7,7 +7,7 @@ using Steamworks.Data;
 namespace com.github.zehsteam.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(MenuPageMain))]
-internal static class MenuPageMainPatch
+internal static class MenuPageMain_Patches
 {
     [HarmonyPatch(nameof(MenuPageMain.ButtonEventJoinGame))]
     [HarmonyPrefix]

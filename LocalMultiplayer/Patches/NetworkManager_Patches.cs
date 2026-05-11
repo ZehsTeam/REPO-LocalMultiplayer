@@ -4,7 +4,7 @@ using HarmonyLib;
 namespace com.github.zehsteam.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(NetworkManager))]
-internal static class NetworkManagerPatch
+internal static class NetworkManager_Patches
 {
     [HarmonyPatch(nameof(NetworkManager.OnDisconnected))]
     [HarmonyPostfix]

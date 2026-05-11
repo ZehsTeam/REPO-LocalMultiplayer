@@ -6,7 +6,7 @@ using Photon.Realtime;
 namespace com.github.zehsteam.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(DataDirector))]
-internal static class DataDirectorPatch
+internal static class DataDirector_Patches
 {
     [HarmonyPatch(nameof(DataDirector.PhotonSetAppId))]
     [HarmonyPostfix]

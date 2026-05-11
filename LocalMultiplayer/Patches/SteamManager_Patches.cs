@@ -11,7 +11,7 @@ using UnityEngine;
 namespace com.github.zehsteam.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(SteamManager))]
-internal static class SteamManagerPatch
+internal static class SteamManager_Patches
 {
     [HarmonyPatch(nameof(SteamManager.Awake))]
     [HarmonyPostfix]

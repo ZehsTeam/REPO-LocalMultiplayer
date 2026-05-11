@@ -5,7 +5,7 @@ using Steamworks;
 namespace com.github.zehsteam.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(SteamClient))]
-internal static class SteamClientPatch
+internal static class SteamClient_Patches
 {
     [HarmonyPatch(nameof(SteamClient.Name), MethodType.Getter)]
     [HarmonyPrefix]

@@ -28,13 +28,13 @@ internal class Plugin : BaseUnityPlugin
 
         GlobalSave = new JsonSave(Utils.GetPluginPersistentDataPath(), "GlobalSave");
 
-        _harmony.PatchAll(typeof(SteamClientPatch));
-        _harmony.PatchAll(typeof(DataDirectorPatch));
-        _harmony.PatchAll(typeof(NetworkManagerPatch));
-        _harmony.PatchAll(typeof(SteamManagerPatch));
-        _harmony.PatchAll(typeof(InputManagerPatch));
-        _harmony.PatchAll(typeof(MenuPageMainPatch));
-        _harmony.PatchAll(typeof(PlayerAvatarPatch));
+        _harmony.PatchAll(typeof(SteamClient_Patches));
+        _harmony.PatchAll(typeof(DataDirector_Patches));
+        _harmony.PatchAll(typeof(NetworkManager_Patches));
+        _harmony.PatchAll(typeof(SteamManager_Patches));
+        _harmony.PatchAll(typeof(InputManager_Patches));
+        _harmony.PatchAll(typeof(MenuPageMain_Patches));
+        _harmony.PatchAll(typeof(PlayerAvatar_Patches));
 
         ConfigManager.Initialize(Config);
     }

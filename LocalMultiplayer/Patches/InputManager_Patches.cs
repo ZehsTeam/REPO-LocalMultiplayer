@@ -4,7 +4,7 @@ using HarmonyLib;
 namespace com.github.zehsteam.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(InputManager))]
-internal static class InputManagerPatch
+internal static class InputManager_Patches
 {
     [HarmonyPatch(nameof(InputManager.SaveDefaultKeyBindings))]
     [HarmonyPrefix]

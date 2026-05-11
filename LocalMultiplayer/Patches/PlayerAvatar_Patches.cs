@@ -5,7 +5,7 @@ using Steamworks;
 namespace com.github.zehsteam.LocalMultiplayer.Patches;
 
 [HarmonyPatch(typeof(PlayerAvatar))]
-internal static class PlayerAvatarPatch
+internal static class PlayerAvatar_Patches
 {
     [HarmonyPatch(nameof(PlayerAvatar.AddToStatsManager))]
     [HarmonyPrefix]
