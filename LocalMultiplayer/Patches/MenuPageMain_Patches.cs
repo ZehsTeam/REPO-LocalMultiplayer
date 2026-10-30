@@ -15,7 +15,7 @@ internal static class MenuPageMain_Patches
     {
         SteamAccountManager.AssignSpoofAccount();
 
-        SteamManager.instance?.OnGameLobbyJoinRequested(new Lobby(GlobalSaveHelper.SteamLobbyId.Value), SteamClient.SteamId);
+        SteamLobbyManager.instance?.OnGameLobbyJoinRequested(new Lobby(GlobalSaveHelper.SteamLobbyId.Value), SteamClient.SteamId);
 
         return false;
     }

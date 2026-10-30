@@ -1,19 +1,16 @@
 using com.github.zehsteam.LocalMultiplayer.Helpers;
 using com.github.zehsteam.LocalMultiplayer.Managers;
 using HarmonyLib;
-using Photon.Pun;
-using Photon.Realtime;
 using Steamworks;
 using Steamworks.Data;
-using System;
 using UnityEngine;
 
 namespace com.github.zehsteam.LocalMultiplayer.Patches;
 
-[HarmonyPatch(typeof(SteamManager))]
-internal static class SteamManager_Patches
+[HarmonyPatch(typeof(SteamLobbyManager))]
+internal static class SteamLobbyManager_Patches
 {
-    [HarmonyPatch(nameof(SteamManager.Awake))]
+    [HarmonyPatch(nameof(SteamLobbyManager.Awake))]
     [HarmonyPostfix]
     [HarmonyPriority(Priority.First)]
     private static void Awake_Patch()
@@ -21,7 +18,7 @@ internal static class SteamManager_Patches
         SteamAccountManager.Initialize();
     }
 
-    [HarmonyPatch(nameof(SteamManager.Start))]
+    [HarmonyPatch(nameof(SteamLobbyManager.Start))]
     [HarmonyPostfix]
     private static void Start_Patch()
     {
@@ -29,7 +26,7 @@ internal static class SteamManager_Patches
             Application.Quit();
     }
 
-    [HarmonyPatch(nameof(SteamManager.OnLobbyCreated))]
+    [HarmonyPatch(nameof(SteamLobbyManager.OnLobbyCreated))]
     [HarmonyPostfix]
     private static void OnLobbyCreated_Patch(ref Result _result, ref Lobby _lobby)
     {
@@ -39,13 +36,5 @@ internal static class SteamManager_Patches
         GlobalSaveHelper.SteamLobbyId.Value = _lobby.Id;
 
         SteamAccountManager.ResetSpoofAccountsInUse();
-    }
-
-    [HarmonyPatch(nameof(SteamManager.SendSteamAuthTicket))]
-    [HarmonyPrefix]
-    private static bool SendSteamAuthTicket_Patch()
-    {
-        PhotonNetwork.AuthValues = new AuthenticationValues(Guid.NewGuid().ToString());
-        return false;
     }
 }

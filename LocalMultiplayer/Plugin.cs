@@ -31,10 +31,12 @@ internal class Plugin : BaseUnityPlugin
         _harmony.PatchAll(typeof(SteamClient_Patches));
         _harmony.PatchAll(typeof(DataDirector_Patches));
         _harmony.PatchAll(typeof(NetworkManager_Patches));
-        _harmony.PatchAll(typeof(SteamManager_Patches));
+        _harmony.PatchAll(typeof(SteamLobbyManager_Patches));
+        _harmony.PatchAll(typeof(PlatformManager_Patches));
         _harmony.PatchAll(typeof(InputManager_Patches));
         _harmony.PatchAll(typeof(MenuPageMain_Patches));
         _harmony.PatchAll(typeof(PlayerAvatar_Patches));
+        _harmony.PatchAll(typeof(MetaManager_Patches));
 
         ConfigManager.Initialize(Config);
     }
