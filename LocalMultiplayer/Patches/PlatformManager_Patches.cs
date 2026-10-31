@@ -2,7 +2,6 @@
 using Photon.Pun;
 using Photon.Realtime;
 using Platforms;
-using System;
 
 namespace com.github.zehsteam.LocalMultiplayer.Patches;
 
@@ -15,7 +14,8 @@ internal static class PlatformManager_Patches
     {
         if (PlatformManager.instance.activePlatform.IsInitialised())
         {
-            PhotonNetwork.AuthValues = new AuthenticationValues(Guid.NewGuid().ToString());
+            // Remove Steam auth
+            PhotonNetwork.AuthValues.AuthType = CustomAuthenticationType.None;
         }
     }
 }
